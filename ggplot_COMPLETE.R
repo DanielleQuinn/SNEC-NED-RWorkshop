@@ -6,13 +6,15 @@ library(dplyr)
 # This is a tab delimited file
 fish <- read.delim("fish.txt")
 
-# The grammar of graphics ----
+# ggplot() ----
+# - The Grammar of Graphics ----
 # Any visualization has three components:
 # 1. a data set (What are you trying to look at?)
 # 2. a coordinate system (The most common are x and y axes)
 # 3. a geom (How do you want to visualize the data set on the coordinate system?)
 
-## Getting started with geom_point() ----
+# - Getting Started ----
+# -- geom_point() ----
 # Goal: Create a scatterplot
 ## x: year
 ## y: catch
@@ -35,25 +37,25 @@ ggplot(fish, aes(x = year, y = catch)) +
 ggplot(fish) +
   geom_point(aes(x = year, y = catch))
 
-## geom_histogram() ----
+# -- geom_histogram() ----
 # Goal: Create a histogram
 ## x: area
 ggplot(fish) +
   geom_histogram(aes(x = area))
 
-## geom_density() ----
+# -- geom_density() ----
 # Goal: Create a density plot
 ## x: area
 ggplot(fish) +
   geom_density(aes(x = area))
 
-## geom_bar() ----
+# -- geom_bar() ----
 # Goal: Create a bar plot
 ## x: habitat
 ggplot(fish) +
   geom_bar(aes(x = habitat))
 
-## Exercise 1 ----
+# --- Exercise ----
 # Reproduce the figure called figure1.png
 ggplot(fish) +
   geom_histogram(aes(x = year))
@@ -62,7 +64,7 @@ ggplot(fish) +
 ggplot(fish) +
   geom_point(aes(x = site, y = habitat))
 
-## geom_boxplot() ----
+# -- geom_boxplot() ----
 # Goal: Create a boxplot
 ## x: site
 ## y: area
@@ -80,7 +82,7 @@ ggplot(fish) +
 ggplot(fish) +
   geom_boxplot(aes(x = year, y = area, group = year))
 
-## geom_violin() ----
+# -- geom_violin() ----
 # Goal: Create a violin plot
 ## x: site
 ## y: area
@@ -115,13 +117,13 @@ ggplot(fish, aes(x = site, y = area)) +
   geom_jitter() +
   geom_violin(alpha = 0.5)
 
-## Exercise 2 ----
+# -- Exercise ----
 # Reproduce the figure called figure3.png
 ggplot(fish, aes(x = habitat, y = area)) +
   geom_boxplot() +
   geom_violin(alpha = 0.5)
 
-# Adding colour ----
+# Adding Colour ----
 # Goal: Create a scatterplot
 ## x: year
 ## y: catch
@@ -141,14 +143,14 @@ ggplot(fish) +
 ## unrelated to the dataset so aes() can't follow
 ## the instructions you've given it
 
-## Exercise 3 ----
+# -- Exercise ----
 # Specify a colour from the full R colour palette
 # http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 
 # Specify a colour using a hexidecimal code
 # https://htmlcolorcodes.com/
 
-# Doing more with colour ----
+# - Doing more with colour ----
 ## But what if you want the colour to be based
 ## on something in the dataset?
 
@@ -162,7 +164,7 @@ ggplot(fish) +
 ggplot(fish) +
   geom_point(aes(x = year, y = catch, col = site))
 
-# Exercise 4 ----
+# -- Exercise 4 ----
 # Reproduce the figure called figure4.png
 ggplot(fish) +
   geom_boxplot(aes(x = site, y = area, col = habitat))
@@ -207,7 +209,7 @@ plot2 + theme_minimal()
 ## specific components of existing themes to
 ## customize your own figures
 
-# Exercise 5 ----
+# - Exercise 5 ----
 # Reproduce the figure called figure6.png
 ggplot(fish) +
   geom_bar(aes(x = site, fill = habitat)) +
@@ -227,7 +229,7 @@ plot3 + facet_wrap(~habitat, ncol = 1)
 plot3 + facet_grid(site~habitat)
 plot3 + facet_grid(habitat~site)
 
-# Capstone exercise ----
+# Exercise ----
 # Reproduce the figure called myfigure.png
 
 # Tip: Make a list of what needs to be done and tackle ONE thing at a time.
